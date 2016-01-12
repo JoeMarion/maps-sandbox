@@ -1,0 +1,50 @@
+<head>
+  <title>maps-testing</title>
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpAjclizPyTkAl3oHp0dyWigbz3xXIljw">
+  </script>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  <div>
+    {{> map}}
+  </div>
+
+  <div>
+    {{> addLocation}}
+  </div>
+
+  <div>
+    {{> addEvents}}
+  </div>
+</body>
+
+
+<template name="map">
+  <div id="map-canvas">
+    {{> googleMap name="map" options=mapOptions}}
+  </div>
+</template>
+
+
+<template name="addLocation">
+  <form>
+    <p>Location Name: </p>
+    <input type="text" name="locationName">
+    <p>Address: </p>
+    <input id="address" type="text" name="address">
+    <input type="submit" value="Add Location">
+  </form>
+</template>
+
+<template name="addEvents">
+  <div>
+    {{#each eachEvent}}
+      <h1>{{eventName.name}}</h1>
+      <p>Address: {{eventName.address}}</p>
+      <button class="delete">Delete</button>
+    {{/each}}
+  </div>
+</template>
